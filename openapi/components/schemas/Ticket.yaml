@@ -1,0 +1,36 @@
+type: object
+required:
+  - userid
+  - title
+  - desc
+  - clientside
+  - time
+  - scenario
+  - items
+properties:
+  userid:
+    type: string
+    minLength: 16
+    example: "80351110224678912"
+  title:
+    type: string
+    example: "I lost my items"
+  desc:
+    type: string
+    example: "Please give me my items back"
+  clientside:
+    type: boolean
+    example: false
+  time:
+    type: string
+    example: "Today at 9 am"
+  scenario:
+    type: string
+    example: "The server crashed. When I logged back in, all my items were gone. "
+  items:
+    type: string
+    example: "1 wooden pickaxe, 128 arrows"
+  confirmed:
+    type: boolean
+    example: true
+    deprecated: true

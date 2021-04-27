@@ -1,0 +1,109 @@
+get:
+  tags:
+    - User
+  summary: Get user by discord userid
+  description: |
+    Get the data of the user by the discord userid.
+  operationId: getUserByName
+  parameters:
+    - name: userid
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            Bearer:
+              type: string
+              description: Your api key
+              example: 4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q
+              minLength: 60
+              maxLength: 60
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Ticket.yaml
+    '403':
+      description: Forbidden
+    '404':
+      description: User not found
+post:
+  tags:
+    - User
+  summary: Create new entry
+#  description: This can only be done by the logged in user.
+  operationId: updateUser
+  parameters:
+    - name: userid
+      in: path
+      description: The id under which the data will be created
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: OK
+    '400':
+      description: Invalid user data supplied
+    '409':
+      description: User already exists.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            Bearer:
+              type: string
+              description: Your api key
+              example: 4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q
+              minLength: 60
+              maxLength: 60
+            values:
+              allOf:
+                - $ref: ../components/schemas/Ticket.yaml
+#          $ref: ../components/schemas/Ticket.yaml
+    description: Update user object
+    required: true
+
+delete:
+  tags:
+    - User
+  summary: Get user by discord userid
+  description: |
+    Get the data of the user by the discord userid.
+  operationId: deleteUserById
+  parameters:
+    - name: userid
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            Bearer:
+              type: string
+              description: Your api key
+              example: 4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q
+              minLength: 60
+              maxLength: 60
+  responses:
+    '200':
+      description: Success
+    '403':
+      description: Forbidden
+    '404':
+      description: User not found
