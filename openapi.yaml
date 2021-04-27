@@ -1,0 +1,171 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: ExploreTheBuild Item Recovery
+  contact:
+    name: justCoding
+    email: justus@justcoding.tech
+  license:
+    name: Mozilla Public License Version 2.0
+    url: 'https://www.mozilla.org/en-US/MPL/2.0/'
+  x-logo:
+    url: 'https://avatars.githubusercontent.com/u/81708234?s=200&v=4'
+  description: |
+    This api allows users to interact with the EtB Item Recovery database.
+tags:
+  - name: User
+    description: Operations about user
+servers:
+  - url: 'https://api.justcoding.tech/'
+paths:
+  '/users/{userid}':
+    get:
+      tags:
+        - User
+      summary: Get user by discord userid
+      description: |
+        Get the data of the user by the discord userid.
+      operationId: getUserByName
+      parameters:
+        - name: userid
+          in: path
+          description: The id that needs to be fetched
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Bearer:
+                  type: string
+                  description: Your api key
+                  example: '4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q'
+                  minLength: 60
+                  maxLength: 60
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+        '403':
+          description: Forbidden
+        '404':
+          description: User not found
+    post:
+      tags:
+        - User
+      summary: Create new entry
+      operationId: updateUser
+      parameters:
+        - name: userid
+          in: path
+          description: The id under which the data will be created
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: OK
+        '400':
+          description: Invalid user data supplied
+        '409':
+          description: User already exists.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Bearer:
+                  type: string
+                  description: Your api key
+                  example: '4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q'
+                  minLength: 60
+                  maxLength: 60
+                values:
+                  allOf:
+                    - $ref: '#/components/schemas/Ticket'
+        description: Update user object
+        required: true
+    delete:
+      tags:
+        - User
+      summary: Get user by discord userid
+      description: |
+        Get the data of the user by the discord userid.
+      operationId: deleteUserById
+      parameters:
+        - name: userid
+          in: path
+          description: The id that needs to be fetched
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Bearer:
+                  type: string
+                  description: Your api key
+                  example: '4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q'
+                  minLength: 60
+                  maxLength: 60
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Forbidden
+        '404':
+          description: User not found
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+  schemas:
+    Ticket:
+      type: object
+      required:
+        - userid
+        - title
+        - desc
+        - clientside
+        - time
+        - scenario
+        - items
+      properties:
+        userid:
+          type: string
+          minLength: 16
+          example: '80351110224678912'
+        title:
+          type: string
+          example: I lost my items
+        desc:
+          type: string
+          example: Please give me my items back
+        clientside:
+          type: boolean
+          example: false
+        time:
+          type: string
+          example: Today at 9 am
+        scenario:
+          type: string
+          example: 'The server crashed. When I logged back in, all my items were gone. '
+        items:
+          type: string
+          example: '1 wooden pickaxe, 128 arrows'
+        confirmed:
+          type: boolean
+          example: true
+          deprecated: true
