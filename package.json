@@ -9,7 +9,7 @@
     "start": "openapi preview-docs",
     "build": "openapi bundle -o dist",
     "test": "openapi lint",
-    "gh-pages": "npm run build && redoc-cli bundle ./dist/openapi.yaml --output ./dist/html/index.html"
+    "gh-pages": "npm run build && redoc-cli bundle ./dist/openapi.yaml --output ./dist/index.html"
   },
   "devDependencies": {
     "redoc-cli": "^0.11.4"
