@@ -16,7 +16,6 @@ tags:
   - name: User
     description: Operations about user
 servers:
-  - url: 'https://api.justcoding.tech/v1'
   - url: 'https://api2.justcoding.tech/api/v1'
 paths:
   '/users/{userid}':
