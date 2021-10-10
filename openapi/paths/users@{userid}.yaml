@@ -21,7 +21,7 @@ get:
             Bearer:
               type: string
               description: Your api key
-              example: 4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q
+              example: K9AJkdD8Kyarrf3SJHZQYufQAHvfKFHVyfqZV8cLttg88YpkWMjE8CVrggir
               minLength: 60
               maxLength: 60
   responses:
@@ -64,7 +64,7 @@ post:
             Bearer:
               type: string
               description: Your api key
-              example: 4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q
+              example: K9AJkdD8Kyarrf3SJHZQYufQAHvfKFHVyfqZV8cLttg88YpkWMjE8CVrggir
               minLength: 60
               maxLength: 60
             values:
@@ -77,9 +77,9 @@ post:
 delete:
   tags:
     - User
-  summary: Get user by discord userid
+  summary: Delete user by discord userid
   description: |
-    Get the data of the user by the discord userid.
+    Delete the user from the database.
   operationId: deleteUserById
   parameters:
     - name: userid
@@ -97,7 +97,7 @@ delete:
             Bearer:
               type: string
               description: Your api key
-              example: 4.X~ZHFBWfEV@MvInSCbB§,0dT$.!1,zsHiFv|Dd#4aB_6LhJQ!LhH.mhZ,Q
+              example: K9AJkdD8Kyarrf3SJHZQYufQAHvfKFHVyfqZV8cLttg88YpkWMjE8CVrggir
               minLength: 60
               maxLength: 60
   responses:
