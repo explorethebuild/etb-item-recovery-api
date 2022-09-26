@@ -1,3 +1,7 @@
+# This project was archived
+This project was archived on 2022-09-26 because the API is no longer active or available. 
+There won't be further commits in this repository. 
+
 # etb-item-recovery OpenAPI Definition
 
 ## Working on your OpenAPI Definition
